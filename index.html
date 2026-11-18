@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nasza Rocznica 🥞💖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Quicksand', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 50%, #ffd6e0 100%);
+      color: #4a2535;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 28px;
+      padding: 32px 24px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(214, 51, 108, 0.16);
+      border: 2px solid #fff;
+      position: relative;
+      z-index: 2;
+    }
+    .screen { display: none; animation: fadeIn 0.35s ease; }
+    .screen.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .badge {
+      display: inline-block;
+      background: #ffe3ec;
+      color: #c2255c;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+    .cat-img {
+      width: 190px;
+      height: 190px;
+      object-fit: contain;
+      border-radius: 20px;
+      margin: 0 auto 18px;
+      display: block;
+    }
+    .cat-img.wide {
+      width: 100%;
+      max-width: 340px;
+      height: auto;
+      max-height: 230px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+    h1 {
+      font-size: 1.65rem;
+      color: #a61e4d;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    p {
+      font-size: 1.03rem;
+      line-height: 1.55;
+      color: #5c3747;
+      margin-bottom: 20px;
+    }
+    .details-box {
+      background: #fff5f7;
+      border: 1.5px dashed #faa2c1;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      font-size: 0.98rem;
+      text-align: left;
+    }
+    .details-box div { margin: 6px 0; }
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      min-height: 54px;
+    }
+    button {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: 16px;
+      padding: 14px 26px;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+    }
+    .btn-yes {
+      background: linear-gradient(135deg, #f06595, #d6336c);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(214, 51, 108, 0.32);
+    }
+    .btn-yes:active { transform: scale(0.97); }
+    .btn-no {
+      background: #f1f3f5;
+      color: #495057;
+    }
+    .btn-sunday {
+      display: none;
+      margin-top: 14px;
+      width: 100%;
+      background: #fff0f6;
+      color: #c2255c;
+      border: 2px solid #faa2c1;
+      font-size: 0.95rem;
+      padding: 12px 16px;
+    }
+    .caption {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #c2255c;
+      margin-top: -10px;
+      margin-bottom: 18px;
+    }
+    .flavors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .flavor-btn {
+      background: #fff5f7;
+      border: 2px solid #ffdeeb;
+      color: #862e4c;
+      padding: 12px 10px;
+      font-size: 0.95rem;
+      border-radius: 14px;
+    }
+    .flavor-btn.selected {
+      background: #ffdeeb;
+      border-color: #e64980;
+      color: #a61e4d;
+    }
+    .ticket {
+      background: #fff9db;
+      border: 2px dashed #fcc419;
+      border-radius: 20px;
+      padding: 18px;
+      margin-top: 10px;
+      text-align: left;
+      color: #5c4814;
+    }
+    .ticket h3 {
+      text-align: center;
+      color: #d9480f;
+      margin-bottom: 10px;
+    }
+    .ticket div { margin: 6px 0; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div id="screen-ask" class="screen active">
+      <div class="badge">✨ Zaproszenie specjalne ✨</div>
+      <img src="kotek1.jpg" alt="Rudy kotek" class="cat-img" />
+      <h1>Czy uczcimy naszą rocznicę? 🥞💖</h1>
+      <p>Mam dla Ciebie mały plan na wspólne świętowanie – co powiesz na pyszne naleśniki tylko we dwoje?</p>
+      <div class="details-box">
+        <div>📅 <strong>Kiedy:</strong> Ten piątek</div>
+        <div>📍 <strong>Gdzie:</strong> Naleśnikarnia w Tarnowskich Górach</div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-yes" onclick="acceptDate('Ten piątek')">TAK! 💖</button>
+        <button class="btn-no" onclick="showSadScreen()">Nie 😢</button>
+      </div>
+    </div>
+
+    <div id="screen-sad" class="screen">
+      <div class="badge">🥺 Ej no...</div>
+      <img src="kotek2.jpg" alt="Płaczący kotek" class="cat-img" />
+      <h1>Na pewno nie? 😿</h1>
+      <p>Kotek już się nastawił na naleśniki z Tobą... Zastanów się jeszcze raz!</p>
+      <div class="btn-row">
+        <button class="btn-yes" onclick="acceptDate('Ten piątek')">Dobra, TAK! 💖</button>
+        <button class="btn-no" id="runaway-btn" onclick="dodgeButton()">Nadal nie... 🙈</button>
+      </div>
+      <button class="btn-sunday" id="sunday-btn" onclick="acceptDate('Ta niedziela')">
+        Nie mogę w piątek, przełóżmy na niedzielę! 🗓️🥞
+      </button>
+    </div>
+
+    <div id="screen-yes" class="screen">
+      <div class="badge">🎉 Wiedziałem! 🎉</div>
+      <img src="kotek3.jpg" alt="Dwie pantery" class="cat-img wide" />
+      <div class="caption">To dosłownie my 🐾💖</div>
+      <h1>Jesteśmy umówieni!</h1>
+      <p>Na jakie naleśniki masz największą ochotę w <strong id="chosen-day-text">ten piątek</strong>?</p>
+      <div class="flavors">
+        <button class="flavor-btn selected" onclick="selectFlavor(this, 'Na słodko (owoce / czekolada) 🍓🍫')">Na słodko 🍓</button>
+        <button class="flavor-btn" onclick="selectFlavor(this, 'Na wytrawnie (ser / kurczak / szpinak) 🧀')">Na wytrawnie 🧀</button>
+        <button class="flavor-btn" onclick="selectFlavor(this, 'Pół na pół – bierzemy dwa różne! 😋')">Pół na pół 😋</button>
+        <button class="flavor-btn" onclick="selectFlavor(this, 'Zdecydujemy na miejscu 👀')">Zdecydujemy tam 👀</button>
+      </div>
+      <button class="btn-yes" style="width: 100%;" onclick="showTicket()">Zatwierdź randkę 💌</button>
+    </div>
+
+    <div id="screen-ticket" class="screen">
+      <div class="badge">🎟️ Bilet na randkę</div>
+      <img src="kotek4.jpg" alt="Pantera z łapką" class="cat-img" />
+      <h1>Do zobaczenia! 💖</h1>
+      <p>Zrób screena i wyślij mi, żebym wiedział, że wszystko zatwierdzone!</p>
+      <div class="ticket">
+        <h3>🥞 ROCZNICOWE NALEŚNIKI</h3>
+        <div>📅 Termin: <span id="ticket-day">Ten piątek</span></div>
+        <div>📍 Miejsce: Tarnowskie Góry</div>
+        <div>🍽️ Wybór: <span id="ticket-flavor">Na słodko (owoce / czekolada) 🍓🍫</span></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let chosenDay = 'Ten piątek';
+    let chosenFlavor = 'Na słodko (owoce / czekolada) 🍓🍫';
+    let dodgeCount = 0;
+
+    function switchScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function showSadScreen() {
+      switchScreen('screen-sad');
+    }
+
+    function dodgeButton() {
+      dodgeCount++;
+      const btn = document.getElementById('runaway-btn');
+      const x = (Math.random() - 0.5) * 140;
+      const y = (Math.random() - 0.5) * 70;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+      if (dodgeCount >= 3) {
+        document.getElementById('sunday-btn').style.display = 'block';
+      }
+    }
+
+    function acceptDate(day) {
+      chosenDay = day;
+      document.getElementById('chosen-day-text').textContent = day.toLowerCase();
+      switchScreen('screen-yes');
+    }
+
+    function selectFlavor(el, flavor) {
+      document.querySelectorAll('.flavor-btn').forEach(b => b.classList.remove('selected'));
+      el.classList.add('selected');
+      chosenFlavor = flavor;
+    }
+
+    function showTicket() {
+      document.getElementById('ticket-day').textContent = chosenDay;
+      document.getElementById('ticket-flavor').textContent = chosenFlavor;
+      switchScreen('screen-ticket');
+    }
+  </script>
+</body>
+</html>
